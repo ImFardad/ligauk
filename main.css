@@ -627,6 +627,7 @@ footer-tag {
 
   .body{
     background-image: none;
+    height: 70vh;
   }
 
   .hero-content {
