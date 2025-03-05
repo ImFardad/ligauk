@@ -1,0 +1,749 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@600&display=swap");
+
+/* Global styles */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+:root {
+  --primary-bg: #1a1a1a; /* مشکی */
+  --secondary-bg: #2d2d2d; /* طوسی تیره */
+  --third-bg: #3f3f3f; /* طوسی تیره */
+  --text-color: #ffffff; /* سفید */
+  --accent-blue: #5AB1BB; /* آبی ندوئی */
+  --accent-green: #A5C882; /* سبز نئونی */
+  --grayish-blue: #a0a0a0; /* طوسی روشن */
+  --grayish-dark: #293e47;
+  --hero-height: 90vh;
+  --hero-height-mobile: 90vh;
+  --FarbeEins: 81, 118, 133;
+  --FarbeZwei: 86, 83, 123;
+  --FarbeDrei: 96, 61, 120;
+  --FarbeVier: 107, 67, 84;
+  --FarbeFuenf: 92, 61, 64;
+}
+
+html {
+  font-family: Vazirmatn, sans-serif;
+  direction: rtl;
+  font-weight: 400;
+  font-size: 18px;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  background-color: var(--primary-bg);
+  color: var(--text-color);
+}
+
+body {
+  text-align: right;
+  font-family: Vazirmatn, sans-serif;
+  font-size: 1rem; /* استفاده از واحد rem برای فونت */
+  background-color: var(--primary-bg);
+  height: 90vh;
+}
+
+body {
+  width: 100%;
+  background-image: radial-gradient(circle at top right, rgba(121, 68, 154, 0.13),       transparent),
+    radial-gradient(circle at 20% 80%, rgba(41, 196, 255, 0.13), transparent)
+}
+
+canvas {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+
+h1,
+h2,
+h3 {
+  font-family: Vazirmatn, sans-serif;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+h4 {
+  font-family: 'Vazirmatn', sans-serif;
+  font-weight: 800;
+  font-size: 2.5rem; /* بزرگ‌کردن فونت */
+  color: var(--text-color);
+  text-shadow: 
+    0 0 5px rgba(90, 177, 187, 0.8), /* درخشش آبی ندوئی */
+    0 0 10px rgba(165, 200, 130, 0.8); /* درخشش سبز نئونی */
+  transition: transform 0.3s ease, text-shadow 0.3s ease; /* اضافه کردن transition برای hover */
+}
+
+h4:hover {
+  text-shadow: 
+    0 0 10px rgba(90, 177, 187, 1), /* درخشش آبی قوی‌تر */
+    0 0 20px rgba(165, 200, 130, 1); /* درخشش سبز قوی‌تر */
+}
+
+p {
+  text-align: justify; /* جاستیفای متن */
+  text-justify: inter-word; /* بهبود فاصله‌های بین کلمات */
+  line-height: 1.6; /* افزایش فاصله بین خطوط برای خوانایی بهتر */
+  font-size: 1rem; /* اندازه فونت */
+  color: var(--text-color); /* رنگ متن */
+  margin-bottom: 1.5rem; /* فاصله از پاراگراف بعدی */
+}
+
+/* buttons */
+.btn {
+  border: none;
+  outline: none;
+  border-radius: 30px;
+  padding: 17px 64px;
+  font-weight: 700;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: opacity 0.3s ease;
+  font-family: vazirmatn, sans-serif;
+}
+
+.btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.btn.primary {
+  background: var(--accent-blue);
+  color: var(--text-color);
+}
+
+.btn.secondary {
+  background: var(--accent-green);
+  color: var(--primary-bg);
+}
+
+/* استایل‌دهی به nav */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 36px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px; /* فاصله بین لینک‌ها */
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-family: 'Vazirmatn', sans-serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+  padding: 10px;
+}
+
+.nav-links a:hover {
+  color: var(--accent-blue); /* تغییر رنگ هنگام هاور */
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(90, 177, 187, 0.8));
+}
+
+/* hero-section */
+.hero-section {
+  min-height: 90vh;
+  background: rgba(45,45,45,0.5) url("images/bg-hero-desktop.svg") no-repeat;
+  backdrop-filter: blur(3px);
+  padding: 36px 59px;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+}
+
+.hero-content .text-info {
+  flex: 1;
+  padding-right: 70px;
+  padding-left: 20px;
+}
+
+.hero-content .text-info p {
+  margin: 25px 0;
+  color: var(--text-color);
+}
+
+.hero-content .illustration {
+  flex: 1;
+}
+
+.hero-content .illustration img {
+  width: 100%;
+  border-radius: 20px; /* گرد کردن گوشه‌های عکس */
+  transition: transform 0.3s ease, filter 0.3s ease; /* اضافه کردن transition برای hover و glow */
+}
+
+.hero-content .illustration img:hover {
+  transform: scale(1.05); /* بزرگ‌کردن عکس هنگام هاور */
+  filter: drop-shadow(0 0 15px rgba(90, 177, 187, 0.8)); /* افکت Glow با رنگ آبی ندوئی */
+}
+
+/* features-section */
+.features-section {
+  padding: 100px 59px 200px 59px;
+  position: relative;
+  /* background-color: var(--primary-bg); */
+  backdrop-filter: blur(1px);
+}
+
+.feature {
+  display: flex;
+  min-height: 400px ;
+  margin-bottom: 45px;
+  padding: 55px 55px 55px 100px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 20px;
+  background-color: var(--secondary-bg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* اضافه کردن transition برای hover */
+}
+
+.feature:hover {
+  transform: scale(1.05); /* بزرگ‌شدن هنگام hover */
+  box-shadow: rgba(149, 157, 165, 0.4) 0px 12px 36px; /* سایه بیشتر هنگام hover */
+}
+
+.feature .text-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.feature .text-info h2 {
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.feature .text-info p {
+  color: var(--grayish-blue);
+}
+
+.feature .illustration {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.feature .illustration img {
+  height: 90%;
+}
+
+.feature:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.feature:nth-child(even) .illustration {
+  justify-content: flex-start;
+}
+
+.cta {
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 50px 0;
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 10;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: auto;
+  background: var(--secondary-bg);
+}
+
+.cta h2 {
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+/* a item */
+.accordion-item {
+  background-color: var(--third-bg);
+  border-radius: 0.4rem;
+  margin-bottom: 1rem; /* فاصله بین آیتم‌ها */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* باکس‌شادو خفیف و نامحسوس */
+  transition: box-shadow 0.3s ease; /* انیمیشن برای باکس‌شادو */
+  border:none
+}
+.accordion-item:target {
+  scroll-margin-top: 1rem; /* فاصله از بالای صفحه */
+}
+
+.accordion-item:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* افزایش سایه هنگام هاور */
+}
+
+.accordion-item hr {
+  background-color: var(--third-bg);
+  border: none;
+  height: 1px;
+  margin: 0;
+}
+
+.accordion-link {
+  font-size: 1.6rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  background-color: var(--third-bg);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 0.4rem; /* گرد کردن گوشه‌ها */
+}
+
+.accordion-link h3 {
+  font-weight: 500;
+  font-size: 1.25rem; /* کاهش اندازه فونت برای موبایل */
+  margin: 0;
+  color: var(--text-color);
+}
+
+.accordion-link i {
+  color: var(--accent-blue); /* استفاده از آبی ندوئی */
+  padding: 0.5rem;
+  font-size: 1.5rem; /* کاهش اندازه آیکون برای موبایل */
+}
+
+.accordion-link ul {
+  display: flex;
+  align-items: flex-end;
+  list-style-type: none;
+  margin-left: 1.5rem; /* کاهش فاصله برای موبایل */
+}
+
+.accordion-link li {
+  font-size: 0.75rem; /* کاهش اندازه فونت برای موبایل */
+  color: rgba(255, 255, 255, 0.4);
+  padding: 0 0 1px 5px;
+}
+
+.accordion-link div {
+  display: flex;
+  align-items: center;
+}
+
+.accordion-link .ion-md-arrow-down {
+  display: none;
+}
+
+.answer {
+  max-height: 0;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--third-bg);
+  transition: max-height 650ms;
+  border-radius: 0 0 0.4rem 0.4rem; /* گرد کردن گوشه‌های پایینی */
+}
+
+.answer p {
+  color: var(--text-color);
+  font-size: 0.875rem; /* کاهش اندازه فونت برای موبایل */
+  padding: 1rem;
+  margin: 0;
+  line-height: 1.6; /* افزایش فاصله بین خطوط برای خوانایی بهتر */
+}
+
+.accordion-item:target .answer {
+  max-height: 20rem;
+  overflow: hidden;
+}
+
+.accordion-item:target .accordion-link .ion-md-arrow-forward {
+  display: none;
+}
+
+.accordion-item:target .accordion-link .ion-md-arrow-down {
+  display: block;
+}
+/* our team */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: var(--primary-bg);
+  gap: 20px;
+  justify-content: center;
+}
+
+/* استایل‌های تگ h2 */
+.team-heading {
+  text-align: center; /* وسط‌چین کردن متن */
+  width: 100%; /* عرض کامل */
+  margin-bottom: 20px; /* فاصله از آیتم‌های بعدی */
+  font-size: 2rem; /* اندازه فونت */
+  color: var(--text-color); /* رنگ متن */
+}
+
+.our-team {
+  padding: 30px 0 40px;
+  margin-bottom: 30px;
+  text-align: center;
+  background-color: var(--grayish-dark);
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px; /* اضافه کردن گوشه‌های گرد */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* اضافه کردن سایه */
+}
+
+.our-team .picture {
+  display: inline-block;
+  height: 130px;
+  width: 130px;
+  margin-bottom: 50px;
+  z-index: 1;
+  position: relative;
+}
+
+.our-team .picture::before {
+  content: "";
+  width: 100%;
+  height: 0;
+  border-radius: 50%;
+  background-color: var(--accent-blue); /* استفاده از آبی ندوئی */
+  position: absolute;
+  bottom: 135%;
+  right: 0;
+  left: 0;
+  opacity: 0.9;
+  transform: scale(3);
+  transition: all 0.3s linear 0s;
+}
+
+.our-team:hover .picture::before {
+  height: 100%;
+}
+
+.our-team .picture::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--accent-blue); /* استفاده از آبی ندوئی */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.our-team .picture img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  transform: scale(1);
+  transition: all 0.9s ease 0s;
+}
+
+.our-team:hover .picture img {
+  box-shadow: 0 0 0 14px var(--secondary-bg); /* استفاده از رنگ ثانویه سایت */
+  transform: scale(0.7);
+}
+
+.our-team .title {
+  display: block;
+  font-size: 15px;
+  color: var(--text-color); /* استفاده از رنگ متن سایت */
+  text-transform: capitalize;
+}
+
+.our-team .social {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: var(--accent-blue); /* استفاده از آبی ندوئی */
+  position: absolute;
+  bottom: -100px;
+  left: 0;
+  transition: all 0.5s ease 0s;
+}
+
+.our-team:hover .social {
+  bottom: 0;
+}
+
+.our-team .social li {
+  display: inline-block;
+}
+
+.our-team .social li a {
+  display: block;
+  padding: 10px;
+  font-size: 17px;
+  color: var(--text-color); /* استفاده از رنگ متن سایت */
+  transition: all 0.3s ease 0s;
+  text-decoration: none;
+}
+
+.our-team .social li a:hover {
+  color: var(--accent-blue); /* استفاده از آبی ندوئی */
+  background-color: var(--secondary-bg); /* استفاده از رنگ ثانویه سایت */
+}
+
+/* footer */
+footer {
+  background: var(--primary-bg);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 150px 70px 70px 70px;
+  font-size: 14px;
+  position: relative;
+}
+
+footer .logo {
+  color: var(--text-color);
+}
+
+footer .contact {
+  max-width: 350px;
+  width: 100%;
+  margin-right: 2rem;
+}
+
+footer .contact p {
+  margin: 20px 0;
+  display: flex;
+  align-items: flex-start;
+  color: var(--text-color);
+}
+
+footer .contact p img {
+  height: 14px;
+  margin-right: 15px;
+  margin-top: 3px;
+}
+
+.footer-section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  width: 100%;
+}
+
+footer a {
+  text-decoration: none;
+  color: var(--text-color);
+  margin-bottom: 15px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+footer .links {
+  display: flex;
+  flex-direction: column;
+}
+
+footer .socials {
+  font-size: 20px;
+  align-self: flex-start;
+}
+
+.copyright {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  font-size: 12px;
+  color: var(--text-color);
+  text-align: center;
+}
+
+footer-tag {
+  background: var(--primary-bg);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  padding: 50px 20px 20px 20px;
+  font-size: 10px;
+  position: relative;
+  justify-content: center;
+}
+
+.made-by {
+  position: absolute;
+  text-align: center; /* وسط‌چین کردن متن */
+  margin-top: 1rem; /* فاصله از بالا */
+  padding: 0.5rem 0; /* پدینگ بالا و پایین */
+  font-size: 0.875rem; /* اندازه فونت */
+  color: rgba(255, 255, 255, 0.7); /* رنگ متن */
+}
+
+.made-by strong {
+  color: var(--accent-blue); /* رنگ آبی ندوئی برای نام Fardad */
+  font-weight: 600; /* ضخامت متن */
+}
+
+.container {
+  min-width: 100%;
+  backdrop-filter: blur(1px);
+  background-color: var(--primary-bg);
+  padding-top: 20px;
+}
+
+
+@media (max-width: 1000px) {
+  .nav-links {
+    display: none; /* مخفی کردن لینک‌ها */
+  }
+}
+
+/* تنظیمات موبایل */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px; /* کاهش اندازه فونت پایه در موبایل */
+  }
+
+  /* hero-section */
+  .hero-section {
+    min-height: 70vh; /* ارتفاع خودکار */
+    padding: 20px;
+  }
+
+  .body{
+    background-image: none;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-content .text-info {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .hero-content .text-info h1 {
+    font-size: 2rem; /* کاهش اندازه عنوان */
+  }
+
+  .hero-content .text-info p {
+    font-size: 1rem; /* کاهش اندازه متن */
+  }
+
+  .hero-content .illustration img {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  /* تنظیمات موبایل */
+  .btn {
+    padding: 10px 30px; /* کاهش پدینگ در موبایل */
+    font-size: 0.875rem; /* کاهش اندازه فونت در موبایل */
+  }
+
+  /* features-section */
+  .features-section {
+    padding: 50px 20px;
+  }
+
+  .feature {
+    flex-direction: column-reverse;
+    height: auto;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .feature .text-info h2 {
+    font-size: 1.5rem; /* کاهش اندازه عنوان */
+  }
+
+  .feature .text-info p {
+    font-size: 1rem; /* کاهش اندازه متن */
+  }
+
+  .feature .illustration img {
+    height: auto;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  /* our-team */
+  .our-team {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .our-team .picture {
+    height: 100px;
+    width: 100px;
+    margin-bottom: 20px;
+  }
+
+  .our-team .title {
+    font-size: 1rem; /* کاهش اندازه عنوان */
+  }
+
+  /* footer */
+  footer {
+    padding: 50px 20px;
+  }
+
+  footer .contact p {
+    font-size: 1rem; /* کاهش اندازه متن */
+  }
+
+  .footer-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .copyright {
+    font-size: 0.875rem; /* کاهش اندازه متن */
+  }
+
+
+  /* a item */
+
+  .accordion-link {
+    padding: 0.75rem; /* کاهش پدینگ برای موبایل */
+  }
+
+  .accordion-link h3 {
+    font-size: 1rem; /* کاهش بیشتر اندازه فونت برای موبایل */
+  }
+
+  .accordion-link i {
+    font-size: 1.25rem; /* کاهش اندازه آیکون برای موبایل */
+  }
+
+  .accordion-link ul {
+    margin-left: 1rem; /* کاهش فاصله برای موبایل */
+  }
+
+  .accordion-link li {
+    font-size: 0.625rem; /* کاهش بیشتر اندازه فونت برای موبایل */
+  }
+
+  .answer p {
+    font-size: 0.75rem; /* کاهش بیشتر اندازه فونت برای موبایل */
+    padding: 0.75rem; /* کاهش پدینگ برای موبایل */
+  }
+}
