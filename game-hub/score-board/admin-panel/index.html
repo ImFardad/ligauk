@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="style-admin.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Admin Panel</h2>
+        <div class="form-container">
+            <h3>Create Team</h3>
+            <form id="create-team-form">
+                <input type="text" id="create-team-name" placeholder="Team Name" required>
+                <button type="submit" class="btn">Create Team</button>
+            </form>
+        </div>
+
+        <div class="form-container">
+            <h3>Update Team</h3>
+            <form id="update-team-form">
+                <select id="update-team-select" required>
+                    <!-- Options will be populated here -->
+                </select>
+                <input type="number" id="update-team-score" placeholder="Score" value="0">
+                <input type="text" id="update-team-status" placeholder="Status (optional)">
+                <button type="submit" class="btn">Update Team</button>
+            </form>
+        </div>
+
+        <div class="form-container">
+            <h3>Delete Team</h3>
+            <form id="delete-team-form">
+                <select id="delete-team-select" required>
+                    <!-- Options will be populated here -->
+                </select>
+                <button type="submit" class="btn">Delete Team</button>
+            </form>
+        </div>
+
+        <div class="team-board">
+            <h3>Team Board</h3>
+            <div id="team-board"></div>
+        </div>
+    </div>
+    <!-- Load admin.js (Firebase connectivity is handled within) -->
+    <script type="module" src="admin.js"></script>
+</body>
+</html>

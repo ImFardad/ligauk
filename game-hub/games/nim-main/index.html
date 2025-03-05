@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nim Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h3 {
+            color: #333;
+        }
+        .controls {
+            margin-bottom: 20px;
+        }
+        label {
+            margin: 0 10px;
+            font-size: 1.2em;
+            color: #555;
+        }
+        input[type="number"] {
+            padding: 5px;
+            font-size: 1em;
+            margin: 0 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 80px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.1em;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .heap {
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            border-radius: 10px;
+            position: relative;
+        }
+        .heap:nth-child(1) {
+            background-color: #FFDDC1;
+        }
+        .heap:nth-child(2) {
+            background-color: #FFABAB;
+        }
+        .heap:nth-child(3) {
+            background-color: #FFC3A0;
+        }
+        .heap:nth-child(4) {
+            background-color: #D5AAFF;
+        }
+        .heap:nth-child(5) {
+            background-color: #A2D9CE;
+        }
+        .heap span {
+            margin: 0 10px;
+            padding: 15px;
+            background-color: #333;
+            border-radius: 50%;
+            cursor: pointer;
+            color: #fff;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nim Game</h1>
+    <div class="controls">
+        <label for="numHeaps">Number of Heaps:</label>
+        <input type="number" id="numHeaps" value="3" min="1" max="10">
+        <label for="maxStones">Max Stones per Heap:</label>
+        <input type="number" id="maxStones" value="5" min="1" max="20">
+        <button onclick="resetGame()">Start Game</button>
+    </div>
+    <h3>Current Player: <span id="currentPlayer">1</span></h3>
+    <div id="heapsContainer"></div>
+
+    <script>
+        let heaps = [];
+        let currentPlayer = 1;
+
+        function renderHeaps() {
+            const container = document.getElementById('heapsContainer');
+            container.innerHTML = '';
+            heaps.forEach((count, index) => {
+                const heapDiv = document.createElement('div');
+                heapDiv.className = 'heap';
+                heapDiv.dataset.index = index;
+                for (let i = 0; i < count; i++) {
+                    const stone = document.createElement('span');
+                    stone.textContent = '🔵';
+                    stone.onclick = () => removeStones(index, i + 1);
+                    heapDiv.appendChild(stone);
+                }
+                container.appendChild(heapDiv);
+            });
+        }
+
+        function removeStones(heapIndex, count) {
+            if (heaps[heapIndex] >= count) {
+                heaps[heapIndex] -= count;
+                if (checkGameOver()) {
+                    alert(`Player ${currentPlayer} loses!`);
+                } else {
+                    currentPlayer = currentPlayer === 1 ? 2 : 1;
+                    document.getElementById('currentPlayer').textContent = currentPlayer;
+                    renderHeaps();
+                }
+            }
+        }
+
+        function checkGameOver() {
+            return heaps.every(count => count === 0);
+        }
+
+        function resetGame() {
+            const numHeaps = parseInt(document.getElementById('numHeaps').value);
+            const maxStones = parseInt(document.getElementById('maxStones').value);
+            heaps = Array.from({ length: numHeaps }, () => Math.floor(Math.random() * maxStones) + 1);
+            currentPlayer = 1;
+            document.getElementById('currentPlayer').textContent = currentPlayer;
+            renderHeaps();
+        }
+
+        window.onload = resetGame;
+    </script>
+</body>
+</html>

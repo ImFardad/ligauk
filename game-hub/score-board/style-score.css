@@ -1,0 +1,229 @@
+/* ===================== */
+/*   Global Variables    */
+/* ===================== */
+:root {
+    --primary-bg: #111; /* مشکی */
+    --secondary-bg: #2d2d2d; /* طوسی تیره */
+    --third-bg: #3f3f3f; /* طوسی کمتر تیره */
+    --text-color: #ffffff; /* سفید */
+    --accent-blue: #5AB1BB; /* آبی ندوئی */
+    --accent-green: #A5C882; /* سبز نئونی */
+    --grayish-blue: #a0a0a0; /* طوسی روشن */
+    --grayish-dark: #293e47;
+  }
+  
+  /* ===================== */
+  /*   Global Styles       */
+  /* ===================== */
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-family: Vazirmatn, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    scroll-behavior: smooth;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+  }
+  
+  body {
+    margin: 0;
+    font-family: Vazirmatn, sans-serif;
+    font-size: 1rem;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+  }
+  
+  /* ===================== */
+  /*   Container           */
+  /* ===================== */
+  .container {
+      width: 80%;
+      margin: 20px auto;
+      padding: 20px;
+      background: var(--secondary-bg);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      border: 2px solid var(--accent-blue);
+  }
+  
+  /* ===================== */
+  /*   Header              */
+  /* ===================== */
+  h2, h3 {
+      /* استفاده از رنگ متن برای هماهنگی بیشتر */
+      color: var(--text-color);
+      text-align: center;
+  }
+  
+  /* ===================== */
+  /*   Button Styles       */
+  /* ===================== */
+  button {
+      background: var(--accent-blue);
+      color: var(--text-color);
+      border: none;
+      border-radius: 30px;
+      padding: 17px 64px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 700;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      transition: opacity 0.3s ease;
+      font-family: Vazirmatn, sans-serif;
+  }
+  
+  button:hover {
+      opacity: 0.8;
+  }
+  
+  /* ===================== */
+  /*   Form Styles         */
+  /* ===================== */
+  form {
+      margin-bottom: 20px;
+  }
+  
+  label {
+      display: block;
+      margin: 10px 0 5px;
+      color: var(--accent-blue);
+  }
+  
+  input[type="number"],
+  input[type="text"],
+  select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--accent-blue);
+      border-radius: 5px;
+      margin-bottom: 10px;
+      background-color: var(--third-bg);
+      color: var(--text-color);
+  }
+  
+  input[type="number"]:focus,
+  input[type="text"]:focus,
+  select:focus {
+      border-color: var(--accent-blue);
+      outline: none;
+  }
+  
+  /* ===================== */
+  /*   Table Styles        */
+  /* ===================== */
+  #score-board {
+      margin-top: 20px;
+      overflow-x: auto;
+  }
+  
+  table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 auto;
+      background: var(--secondary-bg);
+      border: 2px solid var(--accent-blue);
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid var(--grayish-blue);
+  }
+  
+  th {
+      background: var(--accent-blue);
+      color: var(--text-color);
+  }
+  
+  tr:hover {
+      background: var(--third-bg);
+  }
+  
+  tr:nth-child(even) {
+      background: var(--secondary-bg);
+  }
+  
+  tr:nth-child(odd) {
+      background: var(--primary-bg);
+  }
+  
+  /* ===================== */
+  /*   Team Highlight      */
+  /* ===================== */
+  .team.highlight {
+      border-color: var(--accent-blue);
+      font-weight: bold;
+      animation: highlightAnimation 1s ease infinite;
+  }
+  
+  @keyframes highlightAnimation {
+      0% { background-color: var(--secondary-bg); }
+      50% { background-color: var(--accent-blue); }
+      100% { background-color: var(--secondary-bg); }
+  }
+
+
+
+/* ===== Mobile Responsive Styles ===== */
+@media (max-width: 768px) {
+    html {
+      font-size: 16px; /* کاهش اندازه فونت پایه */
+    }
+    
+    body {
+      font-size: 0.9rem;
+    }
+    
+    .container {
+      width: 95%;
+      margin: 10px auto;
+      padding: 15px;
+    }
+    
+    h2, h3 {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+    
+    /* کاهش اندازه دکمه‌ها */
+    button {
+      padding: 12px 32px;
+      font-size: 14px;
+      border-radius: 20px;
+    }
+    
+    label {
+      margin: 8px 0 4px;
+    }
+    
+    input[type="number"],
+    input[type="text"],
+    select {
+      padding: 8px;
+      font-size: 0.9rem;
+    }
+    
+    /* جداول */
+    #score-board {
+      font-size: 0.9rem;
+    }
+    
+    table {
+      font-size: 0.9rem;
+    }
+    
+    th, td {
+      padding: 8px;
+    }
+  }
+  
+  
