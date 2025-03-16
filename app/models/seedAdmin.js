@@ -21,7 +21,7 @@ async function seedAdmin() {
 
     const existingAdmin = await User.findOne({ where: { nationalCode: adminNationalCode } });
     if (existingAdmin) {
-      console.log("کاربر ادمین از قبل وجود دارد.");
+      console.log("admin exist");
       process.exit(0);
     }
     const hashedPassword = await bcrypt.hash(adminPassword, 10);
@@ -34,10 +34,10 @@ async function seedAdmin() {
       isActive: true,
       isAdmin: true
     });
-    console.log("ادمین با موفقیت ایجاد شد:", adminNationalCode);
+    console.log("admin created:", adminNationalCode);
     process.exit(0);
   } catch (error) {
-    console.error("خطا در ایجاد ادمین:", error);
+    console.error("error creating admin:", error);
     process.exit(1);
   }
 }

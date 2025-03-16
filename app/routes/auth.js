@@ -28,7 +28,7 @@ router.post('/register', async (req, res) => {
             return res.render('register', { error: 'کاربری با این کد ملی موجود است', title: 'ثبت نام', user: null });
         }
         const hashedPassword = await bcrypt.hash(password, 10);
-        await User.create({
+        const newUser = await User.create({
             firstName,
             lastName,
             nationalCode,
@@ -37,6 +37,15 @@ router.post('/register', async (req, res) => {
             isActive: false,
             isAdmin: false,
         });
+        
+        // ارسال رویداد Real-time پس از ثبت نام موفق
+        if (req.io) {
+            req.io.emit('update', { 
+                message: 'کاربر جدید ثبت نام کرد', 
+                user: { id: newUser.id, firstName, lastName, nationalCode, phone } 
+            });
+        }
+        
         res.redirect('/auth/login');
     } catch (err) {
         console.error(err);
@@ -73,7 +82,7 @@ router.post('/login', async (req, res) => {
         }
         const token = jwt.sign({ id: user.id, isAdmin: user.isAdmin }, process.env.JWT_SECRET, { expiresIn: '1h' });
         res.cookie('token', token, { httpOnly: true });
-        console.log("Login successful for user:", user.id);
+        console.log("Login successful for user:", user.nationalCode);
         if (user.isAdmin) {
             res.redirect('/admin');
         } else {

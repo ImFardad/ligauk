@@ -62,6 +62,10 @@ router.post('/edit/:id', authMiddleware, adminMiddleware, async (req, res) => {
         user.phone = phone;
         user.isActive = isActive === 'true' || isActive === true;
         await user.save();
+
+        // ارسال رویداد Real-time پس از ویرایش
+        req.io.emit('update', { message: 'کاربر به روز رسانی شد', userId: id });
+        
         res.redirect('/admin');
     } catch (err) {
         console.error(err);
